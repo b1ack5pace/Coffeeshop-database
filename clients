@@ -1,0 +1,14 @@
+                                                     Таблица "public.clients"
+    Столбец     |      Тип      | Правило сортировки | Допустимость NULL |                      По умолчанию                       
+----------------+---------------+--------------------+-------------------+---------------------------------------------------------
+ client_id      | integer       |                    | not null          | nextval('client_id_updater'::regclass)
+ client_name    | text          |                    | not null          | 
+ client_surname | text          |                    | not null          | 
+ client_phone   | text          |                    | not null          | 
+ client_email   | text          |                    | not null          | 
+ date_added     | character(19) |                    | not null          | to_char(CURRENT_TIMESTAMP, 'dd.mm.yyyy hh.mi.ss'::text)
+ discount       | integer       |                    |                   | 0
+Индексы:
+    "unq" UNIQUE CONSTRAINT, btree (client_id, client_phone, client_email)
+Ограничения-проверки:
+    "clients_client_id_check" CHECK (client_id > 0)
