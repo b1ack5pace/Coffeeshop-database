@@ -1,0 +1,10 @@
+                                           Таблица "public.employees"
+     Столбец      |   Тип   | Правило сортировки | Допустимость NULL |               По умолчанию               
+------------------+---------+--------------------+-------------------+------------------------------------------
+ employee_id      | integer |                    | not null          | nextval('employee_id_updater'::regclass)
+ employee_name    | text    |                    | not null          | 
+ employee_surname | text    |                    | not null          | 
+ employee_phone   | text    |                    | not null          | 
+ employee_email   | text    |                    | not null          | 
+Индексы:
+    "unq_e" UNIQUE CONSTRAINT, btree (employee_id, employee_phone, employee_email)
