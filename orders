@@ -1,0 +1,17 @@
+                                                      Таблица "public.orders"
+    Столбец     |      Тип      | Правило сортировки | Допустимость NULL |                      По умолчанию                       
+----------------+---------------+--------------------+-------------------+---------------------------------------------------------
+ order_id       | integer       |                    | not null          | nextval('order_id_updater'::regclass)
+ order_time     | character(19) |                    | not null          | to_char(CURRENT_TIMESTAMP, 'dd.mm.yyyy hh:mi:ss'::text)
+ client_id      | integer       |                    | not null          | 
+ employee_id    | integer       |                    | not null          | 
+ product_id     | integer       |                    | not null          | 
+ product_amount | integer       |                    | not null          | 
+ total_price    | integer       |                    | not null          | 0
+Индексы:
+    "unq_o" UNIQUE CONSTRAINT, btree (order_id)
+Ограничения-проверки:
+    "orders_total_price_check" CHECK (total_price >= 0)
+Триггеры:
+    count_price AFTER INSERT ON orders FOR EACH ROW EXECUTE FUNCTION price_counting()
+    take_from_warehouse AFTER INSERT ON orders FOR EACH ROW EXECUTE FUNCTION taking_from_warehouse()
