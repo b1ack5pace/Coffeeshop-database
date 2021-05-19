@@ -1,0 +1,8 @@
+                                       Таблица "public.suppliers"
+   Столбец   |   Тип   | Правило сортировки | Допустимость NULL |               По умолчанию               
+-------------+---------+--------------------+-------------------+------------------------------------------
+ supplier_id | integer |                    | not null          | nextval('supplier_id_updater'::regclass)
+ name        | text    |                    | not null          | 
+ address     | text    |                    | not null          | 
+Индексы:
+    "unq_s" UNIQUE CONSTRAINT, btree (supplier_id, name)
