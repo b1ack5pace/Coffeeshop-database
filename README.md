@@ -26,6 +26,7 @@ Enjoy:)
 
 
 This is how it works:
+
 1 - Fill table products -> every new product automatically adds to warehouse with amount = 0
 
 2 - Fill table suppliers
