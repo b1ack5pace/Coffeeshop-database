@@ -1,0 +1,12 @@
+                                               Таблица "public.deliveries"
+    Столбец    |      Тип      | Правило сортировки | Допустимость NULL |                  По умолчанию                  
+---------------+---------------+--------------------+-------------------+------------------------------------------------
+ supplier_id   | integer       |                    | not null          | 
+ delivery_date | character(10) |                    | not null          | to_char(CURRENT_TIMESTAMP, 'dd.mm.yyyy'::text)
+ product_id    | integer       |                    | not null          | 
+ amount        | integer       |                    | not null          | 
+ delivery_id   | integer       |                    | not null          | 
+Ограничения-проверки:
+    "deliveries_amount_check" CHECK (amount >= 0)
+Триггеры:
+    add_to_warehouse_from_delivery AFTER INSERT ON deliveries FOR EACH ROW EXECUTE FUNCTION adding_to_warehouse_from_delivery()
