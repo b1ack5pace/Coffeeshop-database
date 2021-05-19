@@ -1,0 +1,11 @@
+                                                    Таблица "public.employee_tt"
+    Столбец     |             Тип             | Правило сортировки | Допустимость NULL |                По умолчанию                 
+----------------+-----------------------------+--------------------+-------------------+---------------------------------------------
+ employee_id_tt | integer                     |                    | not null          | nextval('employee_id_tt_updater'::regclass)
+ shift_start    | timestamp without time zone |                    | not null          | 
+ shift_end      | timestamp without time zone |                    | not null          | 
+ employee_id    | integer                     |                    | not null          | 
+Индексы:
+    "unq_e_t" UNIQUE CONSTRAINT, btree (employee_id_tt)
+Ограничения-проверки:
+    "employee_tt_check" CHECK (shift_end > shift_start)
