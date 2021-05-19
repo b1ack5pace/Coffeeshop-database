@@ -1,0 +1,12 @@
+                                         Таблица "public.products"
+   Столбец    |   Тип   | Правило сортировки | Допустимость NULL |              По умолчанию               
+--------------+---------+--------------------+-------------------+-----------------------------------------
+ product_id   | integer |                    | not null          | nextval('product_id_updater'::regclass)
+ product_name | text    |                    | not null          | 
+ price        | integer |                    | not null          | 
+Индексы:
+    "unq_p" UNIQUE CONSTRAINT, btree (product_id, product_name)
+Ограничения-проверки:
+    "products_price_check" CHECK (price >= 0)
+Триггеры:
+    add_to_warehouse AFTER INSERT ON products FOR EACH ROW EXECUTE FUNCTION adding_to_warehouse()
