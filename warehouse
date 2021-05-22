@@ -1,0 +1,9 @@
+                          Таблица "public.warehouse"
+  Столбец   |   Тип   | Правило сортировки | Допустимость NULL | По умолчанию 
+------------+---------+--------------------+-------------------+--------------
+ product_id | integer |                    | not null          | 
+ amount     | integer |                    | not null          | 0
+Индексы:
+    "unq_w" UNIQUE CONSTRAINT, btree (product_id)
+Ограничения-проверки:
+    "warehouse_amount_check" CHECK (amount >= 0)
